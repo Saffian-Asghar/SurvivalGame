@@ -6,11 +6,11 @@ using UnityEngine;
 public class ProjectilePhysics : Projectile
 {
     [SerializeField] private float lifeTime;
-    private Rigidbody rigidbody;
+    private Rigidbody rigidBody;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     public override void Init(Weapon weapon)
@@ -23,6 +23,17 @@ public class ProjectilePhysics : Projectile
     public override void Launch()
     {
         base.Launch();
-        rigidbody.AddRelativeForce(Vector3.forward * weapon.GetShootingForce(), ForceMode.Impulse);
+        rigidBody.AddRelativeForce(Vector3.forward * weapon.GetShootingForce(), ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        ITakeDamage[] damageTakers = other.GetComponentsInChildren<ITakeDamage>();
+
+        foreach (var item in damageTakers)
+        {
+            item.TakeDamage(weapon, this, transform.position);
+        }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Pistol : Weapon
 {
     [SerializeField] private Projectile bulletPrefab;
+
     protected override void StartShooting(XRBaseInteractor interactor)
     {
         base.StartShooting(interactor);
