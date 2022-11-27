@@ -101,8 +101,8 @@ this.weaponList= l;
     // Start is called before the first frame update
     void Start()
     {
-		currentHealth = maxHealth;
-		healthBar.SetMaxHealth(maxHealth);
+		health= maxHealth;
+		healthBar.SetMaxHealth(this.maxHealth);
     }
 
     // Update is called once per frame
