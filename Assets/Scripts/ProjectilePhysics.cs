@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class ProjectilePhysics : Projectile
+public class ProjectilePhysics : Projectiles
 {
     [SerializeField] private float lifeTime;
     private Rigidbody rigidBody;

@@ -11,7 +11,7 @@ public class PhysicsDamage : MonoBehaviour, ITakeDamage
     {
         rigidBody = GetComponent<Rigidbody>();
     }
-    public void TakeDamage(Weapon weapon, Projectile projectile, Vector3 contactPoint)
+    public void TakeDamage(Weapon weapon, Projectiles projectile, Vector3 contactPoint)
     {
         rigidBody.AddForce(projectile.transform.forward * weapon.GetShootingForce(), ForceMode.Impulse);
     }
